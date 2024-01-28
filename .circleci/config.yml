@@ -69,12 +69,16 @@ workflows:
                 - main
                 - release
       - publish:
+          requires:
+            - test
           filters:
             branches:
               only:
                 - release
 
       - deploy:
+          requires:
+            - publish
           filters:
             branches:
               only:
